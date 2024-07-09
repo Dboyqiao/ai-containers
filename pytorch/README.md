@@ -200,7 +200,7 @@ To add these files correctly please follow the steps described below.
 
     2. Add hosts to config. (**Note:** This is an optional step)
 
-        User can optionally mount their own custom client config file to define a list of hosts and ports where the SSH server is running inside the container. An example of a hostfile is provided below. This file is supposed to be mounted in the launcher container at `/etc/ssh/ssh_config`.
+        User can optionally mount their own custom client config file to define a list of hosts and ports where the SSH server is running inside the container. An example of a config is provided below. This file is supposed to be mounted in the launcher container at `/etc/ssh/ssh_config`.
 
         ```bash
         touch config
@@ -219,8 +219,15 @@ To add these files correctly please follow the steps described below.
             Port <SSH Port>
         ...
         ```
+    3. Setup hostfile. The hostfile is needed for running torch distributed using `ipexrun` utility. If you're not using `ipexrun` you can skip this step.
 
-    3. Launcher run command:
+        ```txt
+        <Host 1 IP/Hostname>
+        <Host 2 IP/Hostname>
+        ...
+        ```
+
+    4. Launcher run command:
 
         ```bash
         docker run -it --rm \
