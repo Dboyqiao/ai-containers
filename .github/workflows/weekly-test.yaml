@@ -50,7 +50,6 @@ jobs:
     uses: intel/ai-containers/.github/workflows/container-ci.yaml@main
     with:
       group_dir: ${{ matrix.group }}
-      ref: main
     secrets: inherit
   helm-ci:
     runs-on: kubectl
